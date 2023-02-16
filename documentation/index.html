@@ -1,0 +1,368 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>NestJS API Template</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+        <link rel="stylesheet" href="./styles/vagrant.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">NestJS API Template</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="nestjs-api-template">NestJS API Template</h1>
+<!-- Uncomment the line below when using this template for a project. -->
+<!-- This project was built with the NestJS Template repo (github link goes here). -->
+
+<p>This repo is a scaffolded implementation of NestJS and supporting tech.</p>
+<p>The purpose of this repo is to provide a straight-forward way to quickly stand up a RESTful API NestJS app, without having to install / configure the many packages that are useful for an average project.</p>
+<p>This is not a turn-key API solution, but rather just a way to get started, quickly.</p>
+<p>Starting points for database connectivity, API endpoint generation, entity creation, data seeding, testing, authentication, etc. are available &#39;out-of-the-box&#39;.</p>
+<p>Example code is provided in the <code>src/example</code> folder, which should be deleted once you are underway.</p>
+<hr>
+<h2 id="includes">Includes</h2>
+<ul>
+<li>NestJS<ul>
+<li>Swagger / OpenAPI</li>
+<li>Basic logging</li>
+<li>Compodoc</li>
+</ul>
+</li>
+<li>TypeORM</li>
+<li>Passport JS<ul>
+<li>JWT Strategy</li>
+</ul>
+</li>
+<li>Postgres connectivity</li>
+<li>Testing<ul>
+<li>Unit testing</li>
+<li>E2E / endpoint testing</li>
+</ul>
+</li>
+<li>Additional packages<ul>
+<li>argon2</li>
+<li>typeorm-extention</li>
+<li>class-validator</li>
+<li>cookie-parser</li>
+<li>helmet</li>
+<li>pg (postgres driver)</li>
+<li>@jest-mock/express (for testing. mocks request and result objects)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="installation-and-setup">Installation and setup</h2>
+<h3 id="the-code-needs-to-be-installed-and-a-database-for-the-project-needs-to-be-created">The code needs to be installed, and a database for the project needs to be created.</h3>
+<p>Create the project folder and change into it</p>
+<div><pre class="line-numbers"><code class="language-bash">mkdir &lt;your project / folder name&gt;
+cd &lt;your project / folder name&gt;</code></pre></div><p>Clone the repo (Don&#39;t forget the &#39; . &#39; at the end!!!)</p>
+<div><pre class="line-numbers"><code class="language-bash">git clone &lt;link goes here&gt; .</code></pre></div><p>Install the node_modules</p>
+<div><pre class="line-numbers"><code class="language-bash">yarn install</code></pre></div><p>Copy the sample.env to .env</p>
+<div><pre class="line-numbers"><code class="language-bash">cp sample.env .env</code></pre></div><p>You will need a database, to connect to. Once a database is available to your project -&gt;</p>
+<p>Set .env vars with your project&#39;s database-specific connection info and jwt secrets.</p>
+<div><pre class="line-numbers"><code class="language-bash">NODE_DEV= // valid: &#39;test&#39; | &#39;dev&#39; | &#39;prod&#39; | &#39;production&#39;
+API_PORT=
+DB_TYPE=
+DB_HOST=
+DB_PORT=
+DB_USER_NAME=
+DB_PASSORD=
+DB_DATABASE_NAME=
+
+JWT_SECRET=
+JWT_REFRESH_SECRET=</code></pre></div><ul>
+<li>If you need a JWT secret, a quick way to get one is in a terminal (use a larger randomBytes() value to make a longer secret string)</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-bash">node -e &quot;console.log(require(&#39;crypto&#39;).randomBytes(64).toString(&#39;base64&#39;));&quot;</code></pre></div><p>If you are not using Postgres as a database, you will need to make some changes to the <code>dbConfig</code> and <code>cliConfig</code> files. More info is provided in the &#39;Database config&#39; paragraph of the <a href="##dev-notes">Dev notes</a> section of this document, below.</p>
+<p>Start the app in dev / watch mode</p>
+<div><pre class="line-numbers"><code class="language-bash">  yarn start:dev</code></pre></div><p>Find the app at <a href="localhost:4000">localhost:4000</a>. You should see a &#39;hello world&#39; message.</p>
+<p>Find the Swagger / OpenAPI docs at <a href="localhost:4000/api">localhost:4000/api</a>. You should see a Swagger page for &#39;example&#39;, &#39;users&#39; and &#39;auth&#39;. Schemas are displayed at the bottom.</p>
+<p>You can then build out data seeders for your database. This template uses <code>factories</code> and <code>seeders</code>. You can find examples in their own folders under the <code>src/db</code> folder, which you can run to get a sense of how the seeding process works.</p>
+<p>If you run the seeders &#39;out-of-the-box&#39;, you should have some test data in tables called <code>examples</code> and <code>user</code>.</p>
+<p>Run the seeders using</p>
+<div><pre class="line-numbers"><code class="language-bash">yarn type-ext:seed</code></pre></div><p>Look over the <a href="##dev-notes">Dev notes</a> section of this document for more info specific to this implementation.</p>
+<hr>
+<h2 id="how-to-use">How to use</h2>
+<p>If there are questions about NestJS, the <a href="https://docs.nestjs.com/">Overview</a> section of the docs is a good place to start.</p>
+<p>If you just want to jump in and see what happens, you can <a href="https://docs.nestjs.com/recipes/crud-generator#generating-a-new-resource">create new endpoint with nest g resource &lt;resource.name.goes.here&gt;</a>, and follow the <code>example</code> code provided in this repo.</p>
+<p>This is where most of the work should be done.</p>
+<ul>
+<li>Here is a general guide for getting started. Look at existing app / auth / example / user code for further guidance.<ul>
+<li>nest g resource <em>name</em></li>
+<li>Fill out as needed, referring to app / auth / example / user code when necessary<ul>
+<li>Use class-validator (ie. @IsUUID, @IsNotEmpty, etc.) decorators as much as possible.</li>
+<li>entity<ul>
+<li>create an entities folder<ul>
+<li>create entity file (xxx.entity.ts)</li>
+</ul>
+</li>
+<li>migration:generate or synchronize<ul>
+<li><strong>_ NOTE _</strong> There is currently an issue with the typeorm cli version 0.3.x that breaks the migration functionality.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>dto</li>
+<li>service</li>
+<li>controller</li>
+<li>module</li>
+<li>tests</li>
+</ul>
+</li>
+<li>Keep the docs up to date<div><pre class="line-numbers"><code class="language-bash">yarn docs:create</code></pre></div></li>
+<li>Keep the README.md file accurate and up to date.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="migrations--seeding">Migrations / Seeding</h2>
+<p>Create a migration</p>
+<div><pre class="line-numbers"><code class="language-bash">yarn migration:create src/db/migrations/name.of.migration</code></pre></div><p>Generate a migration</p>
+<div><pre class="line-numbers"><code class="language-bash">SHOULD: yarn migration:generate src/db/migrations/name.of.migration
+but it doesn&#39;t. There is some kind of bug in the new cli (v. 0.3.x) that doesn&#39;t make a lot of sense</code></pre></div><p>Seed the <code>example</code> and <code>user</code> tables</p>
+<div><pre class="line-numbers"><code class="language-bash">yarn type-ext:seed</code></pre></div><hr>
+<h2 id="testing">Testing</h2>
+<p>Basic tests can be run using</p>
+<div><pre class="line-numbers"><code class="language-bash">yarn test</code></pre></div><p>End-to-end / endpoint tests can be run using</p>
+<div><pre class="line-numbers"><code class="language-bash">yarn test:e2e</code></pre></div><p>An important thing to know about testing with NestJS is that much of it depends on decoupling injected dependencies. This can be confusing at first.</p>
+<p><a href="https://www.youtube.com/watch?v=dXOfOgFFKuY&t=776s">This video</a> is helpful, for explaining the basic concepts and has examples.</p>
+<p><a href="https://github.com/jmcdo29/testing-nestjs/tree/main/apps/typeorm-sample">Here</a> is a helpful place, for better understanding and examples.</p>
+<hr>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>This repo uses the <code>Compodoc</code> plugin. You can generate the document set with this command</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-bash">yarn docs:create</code></pre></div><p>and then view it at <a href="https://localhost:8080">localhost:8080</a>.</p>
+<p>By default, Compodoc creates documentation files in a <code>documentation</code> folder, mounted on the project root.</p>
+<hr>
+<h2 id="dev-notes">Dev notes</h2>
+<ul>
+<li><p>Basis:</p>
+<ul>
+<li>This implementation of NestJS runs in <code>strict mode</code>, ie. it was created using <code>nest new . --strict</code>.</li>
+<li>Use <code>relative</code> imports, ie. &#39;../some/path&#39;, instead of <code>absolute</code> imports, ie. &#39;src/some/path. This will prevent problems during testing.</li>
+<li>Use class-validator decorators in dto and entity files.</li>
+<li>There is an odd issue with linting / formatting, specifically a &#39;Del <code>.</code>&#39; warning that occurs when code has an empty block. There doesn&#39;t appear to be a rule-based linter / formatter solution to this problem. For now, adding <code>// eslint-disable-next-line prettier/prettier</code> above the offending line seems to work. Perhaps your linter / formatter will provide additional suggestions, depending on what you&#39;re using.</li>
+<li>You should delete the example code (found in the <code>src/example</code> folder) from your project, once you are underway.</li>
+</ul>
+</li>
+<li><p>Database config:</p>
+<ul>
+<li>in <code>dbConfig</code>, <code>seedConfig</code> and <code>cliConfig</code> there is an odd typing issue with the &#39;type&#39; key. It basically won&#39;t take a value from <code>process.env.DB_TYPE</code>. This value is &#39;postgres&#39; for this implementation. You will need to change the value of the &#39;type&#39; key in these files to whatever database driver you are using.</li>
+<li>This template uses <code>typeorm-extension</code> to handle interactions with the data/database. These interations are limited to creating, seeding and dropping a database.</li>
+<li>If there are Postgres errors about uuid_v4 not being available, go to pqsql / pgAdmin / etc. and run the following, as you would run a regular SQL statement<div><pre class="line-numbers"><code class="language-bash">create extension &quot;uuid-ossp&quot;;</code></pre></div>This will install a Postgres extension for uuid_v4.</li>
+</ul>
+</li>
+<li><p>TypeORM:</p>
+<ul>
+<li>migrations<ul>
+<li>create</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-bash">yarn typeorm migration:create src/db/migrations/name.of.migration.here</code></pre></div><ul>
+<li>generate<ul>
+<li>Doesn&#39;t work with typeorm 0.3.x<div><pre class="line-numbers"><code class="language-bash">yarn typeorm migration:generate -d ./src/config/cliConfig aMigrationName</code></pre></div>returns the message<div><pre class="line-numbers"><code class="language-bash">No changes in database schema were found - cannot generate a migration. To create a new empty migration use &quot;typeorm migration:create&quot; command</code></pre></div></li>
+<li><a href="https://github.com/typeorm/typeorm/issues/5965#issuecomment-680839366">There is a known issue with this</a> and it looks like the resolution depends on changes to the typeorm package for 0.3.x.</li>
+<li><a href="https://stackoverflow.com/questions/72682474/typeorm-migrationgenerate-failure-not-enough-non-option-arguments-got-0-need">Refer here for more information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Authentication:</p>
+<ul>
+<li>Passport JWT strategy is implemented. <code>auth</code> and <code>user</code> resources are provided as a starting point.</li>
+<li>There is an <code>example/protected</code> route you can use as an example.</li>
+</ul>
+</li>
+<li><p>Testing:</p>
+<ul>
+<li>An example of protected route testing in located in <code>app.e2e-spec.ts</code>.</li>
+<li>As soon as you start adding functionality, tests will fail with confusing messages (ie. &#39;Cant find ... in ...&#39;).<ul>
+<li>This ie likely due to dependencies among mondules. Usually this can be resolved by mocking the test subject&#39;s dependencies.</li>
+<li><a href="https://github.com/jmcdo29/testing-nestjs/tree/main/apps/typeorm-sample/src/cat">Here is a good resource for setting up tests for TypeORM</a>, using the &#39;cat&#39; resource from the NestJS docs.</li>
+<li><a href="https://www.youtube.com/watch?v=dXOfOgFFKuY&t=776s">This video</a> is also helpful.</li>
+</ul>
+</li>
+<li>app.e2e-spec.ts generates log output if <code>process.env.NODE_ENV</code> is not equal to &#39;test&#39;<ul>
+<li>iterations of this output equal the number of times the <code>beforeEach()</code> method of the test/s run.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Logging:</p>
+<ul>
+<li>Basic logging is available using the default logger provided by NestJS. It is sparsely implemented in this repo. It should be better implemented in an actual application.<ul>
+<li>Reference <a href="https://javascript.plainenglish.io/how-to-use-nestjs-logger-2a9cb107bce9">this</a> doc for more things to do.</li>
+</ul>
+</li>
+<li>app.e2e-spec.ts generates log output if <code>process.env.NODE_ENV</code> is not equal to &#39;test&#39;</li>
+</ul>
+</li>
+<li><p>Swagger / OpenAPI</p>
+<ul>
+<li>Decorators for @nestjs/swagger are listed <a href="https://www.programcreek.com/typescript/?api=@nestjs/swagger">here</a>. Look at the sidebar on the right of the page.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="to-do">To Do</h2>
+<ul>
+<li><a href="https://docs.nestjs.com/fundamentals/testing">More robust / detailed tests</a>.<ul>
+<li>More edge case tests are always better.</li>
+<li>app.e2e-spec.ts<ul>
+<li>reliably turn off logging output</li>
+</ul>
+</li>
+<li>auth.e2e-spec.ts<ul>
+<li>figure out how to either attach req.user, or how to mock req.user.<ul>
+<li>underlying refresh / logout code expects this. Tests can&#39;t run witout @Req / req.user object.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Get typeorm cli to properly work with migrations, especially migrations:generate<ul>
+<li><a href="https://github.com/typeorm/typeorm/issues/5965#issuecomment-680839366">This looks like it depends on TypeORM making changes to the cli</a>.</li>
+</ul>
+</li>
+<li>Better configuration management / config object<ul>
+<li>More environment-aware (ie. &#39;dev&#39; / &#39;test&#39; / &#39;production&#39;)</li>
+</ul>
+</li>
+<li>Add Husky</li>
+<li>Passport / Auth.<ul>
+<li>CASL / RBAC</li>
+</ul>
+</li>
+<li>Clean / rebase / squash git before pushing to github.<ul>
+<li>git rebase -i <sha></li>
+<li>Shft I</li>
+<li>reword / squash</li>
+<li>Esc :x</li>
+<li>New commit message</li>
+<li>Esc :x</li>
+</ul>
+</li>
+<li>Admin module/s</li>
+</ul>
+<hr>
+<h2 id="nice-to-have">Nice to have</h2>
+<ul>
+<li><a href="https://docs.nestjs.com/techniques/streaming-files">Streaming</a></li>
+<li><a href="https://docs.nestjs.com/techniques/file-upload">File upload</a></li>
+<li><a href="https://docs.nestjs.com/techniques/caching">Cache management</a></li>
+<li><a href="https://docs.nestjs.com/recipes/router-module">Router module</a></li>
+<li><a href="https://docs.nestjs.com/recipes/automock">Automock</a></li>
+<li>Redis<ul>
+<li>Where / how</li>
+</ul>
+</li>
+<li>Elastic Search<ul>
+<li>Where / how</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
