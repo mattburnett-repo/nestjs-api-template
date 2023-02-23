@@ -127,7 +127,7 @@ If you just want to jump in and see what happens, you can [create new endpoint w
 This is where most of the work should be done.
 
 - Here is a general guide for getting started. Look at existing app / auth / example / user code for further guidance.
-  - nest g resource _name_
+  - nest g resource _name-of-project_
   - Fill out as needed, referring to app / auth / example / user code when necessary
     - Use class-validator (ie. @IsUUID, @IsNotEmpty, etc.) decorators as much as possible.
     - entity
@@ -264,38 +264,4 @@ By default, Compodoc creates documentation files in a `documentation` folder, mo
 
 ## To Do
 
-- [More robust / detailed tests](https://docs.nestjs.com/fundamentals/testing).
-  - More edge case tests are always better.
-  - app.e2e-spec.ts
-    - reliably turn off logging output
-  - auth.e2e-spec.ts
-    - figure out how to either attach req.user, or how to mock req.user.
-      - underlying refresh / logout code expects this. Tests can't run witout @Req / req.user object.
-- Get typeorm cli to properly work with migrations, especially migrations:generate
-  - [This looks like it depends on TypeORM making changes to the cli](https://github.com/typeorm/typeorm/issues/5965#issuecomment-680839366).
-- Better configuration management / config object
-  - More environment-aware (ie. 'dev' / 'test' / 'production')
-- Passport / Auth.
-  - CASL / RBAC
-- Clean / rebase / squash git before pushing to github.
-  - git rebase -i <sha. run git log to show these>
-  - Shft I
-  - reword / squash
-  - Esc :x
-  - New commit message
-  - Esc :x
-- Admin module/s
-
----
-
-## Nice to have
-
-- [Streaming](https://docs.nestjs.com/techniques/streaming-files)
-- [File upload](https://docs.nestjs.com/techniques/file-upload)
-- [Cache management](https://docs.nestjs.com/techniques/caching)
-- [Router module](https://docs.nestjs.com/recipes/router-module)
-- [Automock](https://docs.nestjs.com/recipes/automock)
-- Redis
-  - Where / how
-- Elastic Search
-  - Where / how
+These are moved to 'Issues' section of the repo
