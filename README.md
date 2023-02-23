@@ -1,9 +1,11 @@
 # NestJS API Template
 
 <!-- Uncomment the line below when using this template for a project. -->
-<!-- This project was built with the NestJS Template repo (github link goes here). -->
+<!-- This project was built with the [NestJS Template]([github link goes here)](https://github.com/mattburnett-repo/nestjs-api-template). -->
 
-This repo is a scaffolded implementation of NestJS and supporting tech.
+This repo is a scaffolded / boilerplate implementation of NestJS and supporting modules.
+
+It is a work-in-progress.
 
 The purpose of this repo is to provide a straight-forward way to quickly stand up a RESTful API NestJS app, without having to install / configure the many packages that are useful for an average project.
 
@@ -53,7 +55,7 @@ cd <your project / folder name>
 Clone the repo (Don't forget the ' . ' at the end!!!)
 
 ```bash
-git clone <link goes here> .
+git clone https://github.com/mattburnett-repo/nestjs-api-template.git .
 ```
 
 Install the node_modules
@@ -94,6 +96,13 @@ node -e "console.log(require('crypto').randomBytes(64).toString('base64'));"
 
 If you are not using Postgres as a database, you will need to make some changes to the `dbConfig` and `cliConfig` files. More info is provided in the 'Database config' paragraph of the [Dev notes](##dev-notes) section of this document, below.
 
+Run the tests
+
+```bash
+yarn test
+yarn test:e2e
+```
+
 Start the app in dev / watch mode
 
 ```bash
@@ -102,7 +111,7 @@ Start the app in dev / watch mode
 
 Find the app at [localhost:4000](localhost:4000). You should see a 'hello world' message.
 
-Find the Swagger / OpenAPI docs at [localhost:4000/api](localhost:4000/api). You should see a Swagger page for 'example', 'users' and 'auth'. Schemas are displayed at the bottom.
+Find the Swagger / OpenAPI docs at [localhost:4000/api](localhost:4000/api). You should see a Swagger page displaying 'example', 'users' and 'auth'.
 
 You can then build out data seeders for your database. This template uses `factories` and `seeders`. You can find examples in their own folders under the `src/db` folder, which you can run to get a sense of how the seeding process works.
 
@@ -123,8 +132,6 @@ Look over the [Dev notes](##dev-notes) section of this document for more info sp
 If there are questions about NestJS, the [Overview](https://docs.nestjs.com/) section of the docs is a good place to start.
 
 If you just want to jump in and see what happens, you can [create new endpoint with nest g resource <resource.name.goes.here>](https://docs.nestjs.com/recipes/crud-generator#generating-a-new-resource), and follow the `example` code provided in this repo.
-
-This is where most of the work should be done.
 
 - Here is a general guide for getting started. Look at existing app / auth / example / user code for further guidance.
   - nest g resource _name-of-project_
@@ -159,8 +166,8 @@ yarn migration:create src/db/migrations/name.of.migration
 Generate a migration
 
 ```bash
-SHOULD: yarn migration:generate src/db/migrations/name.of.migration
-but it doesn't. There is some kind of bug in the new cli (v. 0.3.x) that doesn't make a lot of sense
+# This should work but it doesn't. There is a bug in the new cli (v. 0.3.x) that will need to be fixed by the typeorm team.
+yarn migration:generate src/db/migrations/name.of.migration
 ```
 
 Seed the `example` and `user` tables
@@ -173,6 +180,7 @@ yarn type-ext:seed
 
 ## Testing
 
+intera
 Basic tests can be run using
 
 ```bash
@@ -187,9 +195,9 @@ yarn test:e2e
 
 An important thing to know about testing with NestJS is that much of it depends on decoupling injected dependencies. This can be confusing at first.
 
-[This video](https://www.youtube.com/watch?v=dXOfOgFFKuY&t=776s) is helpful, for explaining the basic concepts and has examples.
+[Here](https://github.com/jmcdo29/testing-nestjs/tree/main/apps/typeorm-sample) is a place for better understanding and examples.
 
-[Here](https://github.com/jmcdo29/testing-nestjs/tree/main/apps/typeorm-sample) is a helpful place, for better understanding and examples.
+[This video](https://www.youtube.com/watch?v=dXOfOgFFKuY&t=776s) explains the basic concepts and has examples.
 
 ---
 
@@ -213,16 +221,17 @@ By default, Compodoc creates documentation files in a `documentation` folder, mo
   - This implementation of NestJS runs in `strict mode`, ie. it was created using `nest new . --strict`.
   - Use `relative` imports, ie. '../some/path', instead of `absolute` imports, ie. 'src/some/path. This will prevent problems during testing.
   - Use class-validator decorators in dto and entity files.
-  - There is an odd issue with linting / formatting, specifically a 'Del `.`' warning that occurs when code has an empty block. There doesn't appear to be a rule-based linter / formatter solution to this problem. For now, adding `// eslint-disable-next-line prettier/prettier` above the offending line seems to work. Perhaps your linter / formatter will provide additional suggestions, depending on what you're using.
+  - There is an issue with linting / formatting, specifically a 'Del `.`' warning that occurs when code has an empty block. There doesn't appear to be a rule-based linter / formatter solution to this problem.
+    - For now, adding `// eslint-disable-next-line prettier/prettier` above the offending line seems to work.
   - You should delete the example code (found in the `src/example` folder) from your project, once you are underway.
 - Database config:
-  - in `dbConfig`, `seedConfig` and `cliConfig` there is an odd typing issue with the 'type' key. It basically won't take a value from `process.env.DB_TYPE`. This value is 'postgres' for this implementation. You will need to change the value of the 'type' key in these files to whatever database driver you are using.
-  - This template uses `typeorm-extension` to handle interactions with the data/database. These interations are limited to creating, seeding and dropping a database.
+  - in `dbConfig`, `seedConfig` and `cliConfig` there is a typing issue with the 'type' key. It basically won't take a value from `process.env.DB_TYPE`. This value is 'postgres' for this implementation. You will need to change the value of the 'type' key in these files to whatever database driver you are using.
+  - This template uses `typeorm-extension` to handle interactions with the data/database. These interactions are limited to creating, seeding and dropping a database.
   - If there are Postgres errors about uuid_v4 not being available, go to pqsql / pgAdmin / etc. and run the following, as you would run a regular SQL statement
     ```bash
     create extension "uuid-ossp";
     ```
-    This will install a Postgres extension for uuid_v4.
+    This will add a Postgres extension for uuid_v4.
 - TypeORM:
 
   - migrations
@@ -239,29 +248,22 @@ By default, Compodoc creates documentation files in a `documentation` folder, mo
         ```bash
         No changes in database schema were found - cannot generate a migration. To create a new empty migration use "typeorm migration:create" command
         ```
-      - [There is a known issue with this](https://github.com/typeorm/typeorm/issues/5965#issuecomment-680839366) and it looks like the resolution depends on changes to the typeorm package for 0.3.x.
+      - [This is a known issue](https://github.com/typeorm/typeorm/issues/5965#issuecomment-680839366) and it looks like the resolution depends on changes to the typeorm package for 0.3.x.
       - [Refer here for more information](https://stackoverflow.com/questions/72682474/typeorm-migrationgenerate-failure-not-enough-non-option-arguments-got-0-need)
 
 - Authentication:
   - Passport JWT strategy is implemented. `auth` and `user` resources are provided as a starting point.
-  - There is an `example/protected` route you can use as an example.
+  - There is an `example/protected` route to use as an example.
 - Testing:
   - An example of protected route testing in located in `app.e2e-spec.ts`.
   - As soon as you start adding functionality, tests will fail with confusing messages (ie. 'Cant find ... in ...').
-    - This ie likely due to dependencies among mondules. Usually this can be resolved by mocking the test subject's dependencies.
+    - This ie likely due to dependencies among modules. Usually this can be resolved by mocking the test subject's dependencies.
     - [Here is a good resource for setting up tests for TypeORM](https://github.com/jmcdo29/testing-nestjs/tree/main/apps/typeorm-sample/src/cat), using the 'cat' resource from the NestJS docs.
     - [This video](https://www.youtube.com/watch?v=dXOfOgFFKuY&t=776s) is also helpful.
-  - app.e2e-spec.ts generates log output if `process.env.NODE_ENV` is not equal to 'test'
-    - iterations of this output equal the number of times the `beforeEach()` method of the test/s run.
+  - app.e2e-spec.ts generates TypeORM log output if `process.env.NODE_ENV` is not equal to 'test'.
 - Logging:
   - Basic logging is available using the default logger provided by NestJS. It is sparsely implemented in this repo. It should be better implemented in an actual application.
     - Reference [this](https://javascript.plainenglish.io/how-to-use-nestjs-logger-2a9cb107bce9) doc for more things to do.
   - app.e2e-spec.ts generates log output if `process.env.NODE_ENV` is not equal to 'test'
 - Swagger / OpenAPI
   - Decorators for @nestjs/swagger are listed [here](https://www.programcreek.com/typescript/?api=@nestjs/swagger). Look at the sidebar on the right of the page.
-
----
-
-## To Do
-
-These are moved to 'Issues' section of the repo
