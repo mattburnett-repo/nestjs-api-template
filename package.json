@@ -7,7 +7,8 @@
   "license": "ISC",
   "scripts": {
     "build": "nest build",
-    "docs:create": "npx @compodoc/compodoc -p tsconfig.json --theme vagrant -n \"NestJS API Template\" -s",
+    "docs:create": "npx @compodoc/compodoc -p tsconfig.json --theme vagrant -n \"NestJS API Template\"",
+    "docs:create:server": "npx @compodoc/compodoc -p tsconfig.json --theme vagrant -n \"NestJS API Template\" -s",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "start": "nest start",

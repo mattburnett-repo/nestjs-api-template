@@ -180,7 +180,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/users/entities/user.entity.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/users/entities/user.entity.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -285,7 +285,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/users/entities/user.entity.ts:49</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/users/entities/user.entity.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -443,14 +443,14 @@ export class User {
   @IsString()
   username: string
 
-  @Column({ unique: true, nullable: true })
-  @IsString()
-  email: string
-
   @Column({ nullable: false })
   @IsNotEmpty()
   @IsString()
   password: string
+
+  @Column({ unique: true, nullable: true })
+  @IsString()
+  email: string
 
   @Column({ nullable: true })
   refreshToken: string

@@ -1,13 +1,19 @@
 # Documentation
 
-- This repo uses the `Compodoc` plugin. You can generate the document set with this command
+This repo uses the `Compodoc` plugin.
+
+By default, Compodoc creates documentation files in a `documentation` folder, mounted on the project root.
+
+- To create the documentation without starting the documentation server
 
   ```bash
   yarn docs:create
   ```
 
-  and then view it at [localhost:8080](https://localhost:8080).
+- To create the documentaton and start the documentation server
 
-  ***
+  ```bash
+  yarn docs:create:server
+  ```
 
-  By default, Compodoc creates documentation files in a `documentation` folder, mounted on the project root.
+  View the documentation set at [localhost:8080](https://localhost:8080).

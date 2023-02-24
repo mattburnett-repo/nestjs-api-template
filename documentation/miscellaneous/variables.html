@@ -62,13 +62,13 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
-                            <a href="#cliConfig" title="src/config/seedConfig.ts" ><b>cliConfig</b>&nbsp;&nbsp;&nbsp;(src/.../seedConfig.ts)</a>
-                        </li>
-                        <li>
                             <a href="#connectionSource" title="src/config/cliConfig.ts" ><b>connectionSource</b>&nbsp;&nbsp;&nbsp;(src/.../cliConfig.ts)</a>
                         </li>
                         <li>
                             <a href="#options" title="src/config/seedConfig.ts" ><b>options</b>&nbsp;&nbsp;&nbsp;(src/.../seedConfig.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#seedConfig" title="src/config/seedConfig.ts" ><b>seedConfig</b>&nbsp;&nbsp;&nbsp;(src/.../seedConfig.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -77,67 +77,6 @@
     </table>
 </section>
 
-    <h3>src/config/seedConfig.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="cliConfig"></a>
-                    <span class="name">
-                        <span ><b>cliConfig</b></span>
-                        <a href="#cliConfig"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new DataSource(options)</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="options"></a>
-                    <span class="name">
-                        <span ><b>options</b></span>
-                        <a href="#options"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{
-  migrationsTableName: &#x27;migrations&#x27;,
-  type: &#x27;postgres&#x27;,
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT, 10),
-  username: process.env.DB_USER_NAME,
-  password: process.env.DB_PASSORD,
-  // FIXME: here is the bug with the database name
-  database: &#x27;e-comm_test&#x27;,
-  // database: process.env.DB_DATABASE_NAME,
-  logging: false,
-  synchronize: process.env.NODE_ENV !&#x3D;&#x3D; &#x27;production&#x27; || false,
-  // name: &#x27;default&#x27;,
-  entities: [&#x27;src/**/**.entity{.ts,.js}&#x27;],
-  migrations: [&#x27;src/db/migrations/**/*{.ts,.js}&#x27;],
-  subscribers: [&#x27;src/subscriber/**/*{.ts,.js}&#x27;],
-  seeds: [&#x27;src/db/seeds/**/*{.ts,.js}&#x27;],
-  factories: [&#x27;src/db/factories/**/*{.ts,.js}&#x27;]
-}</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-</section>
     <h3>src/config/cliConfig.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -176,6 +115,65 @@
   //   subscribersDir: &#x27;src/subscriber&#x27;
   // }
 })</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/config/seedConfig.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="options"></a>
+                    <span class="name">
+                        <span ><b>options</b></span>
+                        <a href="#options"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  migrationsTableName: &#x27;migrations&#x27;,
+  type: &#x27;postgres&#x27;,
+  host: process.env.DB_HOST,
+  port: +process.env.DB_PORT,
+  username: process.env.DB_USER_NAME,
+  password: process.env.DB_PASSORD,
+  database: process.env.DB_DATABASE_NAME,
+  logging: false,
+  synchronize: process.env.NODE_ENV !&#x3D;&#x3D; &#x27;production&#x27; || false,
+  // name: &#x27;default&#x27;,
+  entities: [&#x27;src/**/**.entity{.ts,.js}&#x27;],
+  migrations: [&#x27;src/db/migrations/**/*{.ts,.js}&#x27;],
+  subscribers: [&#x27;src/subscriber/**/*{.ts,.js}&#x27;],
+  seeds: [&#x27;src/db/seeds/**/*{.ts,.js}&#x27;],
+  factories: [&#x27;src/db/factories/**/*{.ts,.js}&#x27;]
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="seedConfig"></a>
+                    <span class="name">
+                        <span ><b>seedConfig</b></span>
+                        <a href="#seedConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new DataSource(options)</code>
                     </td>
                 </tr>
 

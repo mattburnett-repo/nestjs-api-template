@@ -218,7 +218,19 @@ export default class UserSeeder implements Seeder {
     factoryManager: SeederFactoryManager
   ): Promise&lt;any&gt; {
     const userFactory &#x3D; await factoryManager.get(User)
+    const repository &#x3D; dataSource.getRepository(User)
+
     const numRecords &#x3D; 3
+
+    //  create test user
+    const testUser &#x3D; new User()
+
+    testUser.name &#x3D; &#x27;Test One&#x27;
+    testUser.username &#x3D; &#x27;testOne&#x27;
+    testUser.password &#x3D; &#x27;testOne&#x27;
+    testUser.email &#x3D; &#x27;test@one.com&#x27;
+
+    await repository.save(testUser)
 
     // save numRecords factory generated entities, to the database
     await userFactory.saveMany(numRecords)
