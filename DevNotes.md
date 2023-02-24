@@ -29,7 +29,8 @@ Database config:
   ```
 
   This will add a Postgres extension for uuid_v4.
-  TypeORM:
+
+TypeORM:
 
 - migrations
   - create
