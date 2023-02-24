@@ -39,14 +39,14 @@ export class User {
   @IsString()
   username: string
 
-  @Column({ unique: true, nullable: true })
-  @IsString()
-  email: string
-
   @Column({ nullable: false })
   @IsNotEmpty()
   @IsString()
   password: string
+
+  @Column({ unique: true, nullable: true })
+  @IsString()
+  email: string
 
   @Column({ nullable: true })
   refreshToken: string

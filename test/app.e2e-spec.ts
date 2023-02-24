@@ -41,7 +41,7 @@ describe('AppController (e2e)', () => {
 
     const loginResponse = await request(app.getHttpServer())
       .post('/auth/login')
-      .send({ username: 'testTwo', password: 'testTwo' })
+      .send({ username: 'testOne', password: 'testOne' })
       .expect(201)
 
     // store the jwt token for the next request

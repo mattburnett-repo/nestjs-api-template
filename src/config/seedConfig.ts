@@ -1,18 +1,20 @@
 import { DataSource, DataSourceOptions } from 'typeorm'
 import { SeederOptions } from 'typeorm-extension'
 
+// Needed to access env vars.
+import { config } from 'dotenv'
+config()
+
 // https://stackoverflow.com/questions/72057915/seed-permanent-data-in-typeorm-v-0-3-6-with-datasource
 
 const options: DataSourceOptions & SeederOptions = {
   migrationsTableName: 'migrations',
   type: 'postgres',
   host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT, 10),
+  port: +process.env.DB_PORT,
   username: process.env.DB_USER_NAME,
   password: process.env.DB_PASSORD,
-  // FIXME: here is the bug with the database name
-  database: 'e-comm_test',
-  // database: process.env.DB_DATABASE_NAME,
+  database: process.env.DB_DATABASE_NAME,
   logging: false,
   synchronize: process.env.NODE_ENV !== 'production' || false,
   // name: 'default',
@@ -23,4 +25,4 @@ const options: DataSourceOptions & SeederOptions = {
   factories: ['src/db/factories/**/*{.ts,.js}']
 }
 
-export const cliConfig = new DataSource(options)
+export const seedConfig = new DataSource(options)
