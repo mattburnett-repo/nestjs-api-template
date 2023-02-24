@@ -23,11 +23,14 @@ Database config:
 - Create the database manually.
   - This repo uses `typeorm-extention` to create / seed / drop the database. However, [there are problems with the create / drop functionality when using Postgres](https://github.com/tada5hi/typeorm-extension/discussions/401).
 - If there are Postgres errors about uuid_v4 not being available, go to pqsql / pgAdmin / etc. and run the following, as you would run a regular SQL statement
-  `bash
-create extension "uuid-ossp";
-`
+
+  ```bash
+  create extension "uuid-ossp";
+  ```
+
   This will add a Postgres extension for uuid_v4.
   TypeORM:
+
 - migrations
   - create
     ```bash
@@ -49,7 +52,9 @@ Authentication:
 
 - Passport JWT strategy is implemented. `auth` and `user` resources are provided as a starting point.
 - There is an `example/protected` route to use as an example.
-  Testing:
+
+Testing:
+
 - An example of protected route testing in located in `app.e2e-spec.ts`.
 - As soon as you start adding functionality, tests will fail with confusing messages (ie. 'Cant find ... in ...').
   - This ie likely due to dependencies among modules. Usually this can be resolved by mocking the test subject's dependencies.
