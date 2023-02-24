@@ -1,6 +1,6 @@
 # Installation and setup
 
-- Clone and install the code.
+- Clone, reset git remove and install the code.
 - Set up a database.
 - Seed the database.
 - Run tests.
@@ -18,6 +18,8 @@ Clone the repo (Don't forget the ' . ' at the end!)
 ```bash
 git clone https://github.com/mattburnett-repo/nestjs-api-template.git .
 ```
+
+`You should reset your project's git remote`.
 
 Edit the project information in `package.json`
 
@@ -46,10 +48,6 @@ Create the database manually.
 
 - This repo uses `typeorm-extention` to create / seed / drop the database. However, [there are problems with the create / drop functionality when using Postgres](https://github.com/tada5hi/typeorm-extension/discussions/401).
   - TL;DR it's less work to create the database manually.
-- If there are Postgres errors about uuid_v4 not being available, go to pqsql / pgAdmin / etc. and run the following, as you would run a regular SQL statement
-  ```bash
-  create extension "uuid-ossp";
-  ```
 
 Once a database is available to your project, set the .env vars with your project's database-specific connection info and jwt secrets.
 
@@ -82,6 +80,11 @@ Run the seeders using
 yarn type-ext:db:seed
 ```
 
+- If there are Postgres errors about uuid_v4 not being available, go to pqsql / pgAdmin / etc. and run the following, as you would run a regular SQL statement
+  ```bash
+  create extension "uuid-ossp";
+  ```
+
 Run the tests
 
 ```bash
@@ -100,9 +103,10 @@ Start the app in dev / watch mode
   yarn start:dev
 ```
 
-Find the app at [localhost:4000](localhost:4000). You should see a 'hello world' message.
+Find the app at [localhost:4000](http://localhost:4000). You should see a 'hello world' message.
 
-Find the Swagger / OpenAPI docs at [localhost:4000/api](localhost:4000/api). You should see a Swagger page displaying 'example', 'users' and 'auth'.
+Find the Swagger / OpenAPI docs at [localhost:4000/api](http://localhost:4000/api). You should see a Swagger page displaying 'example', 'users' and 'auth'.
+You can edit the title and description in the file [main.ts](./src/main.ts), in the `const swaggerConfig` block.
 
 You can then build out data seeders for your database. This template uses `factories` and `seeders`. You can find examples in their own folders under the `src/db` folder, which you can run to get a sense of how the seeding process works.
 

@@ -15,8 +15,6 @@ Starting points for database connectivity, API endpoint generation, entity creat
 
 Example code is provided in the `src/example` folder, which can be deleted once you are underway.
 
----
-
 ## Includes
 
 - NestJS
@@ -38,8 +36,6 @@ Example code is provided in the `src/example` folder, which can be deleted once 
   - helmet
   - pg (postgres driver)
   - @jest-mock/express (for testing. mocks request and result objects)
-
----
 
 ## Links to more details
 
