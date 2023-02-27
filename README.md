@@ -35,6 +35,7 @@ Example code is provided in the `src/example` folder, which can be deleted once 
   - cookie-parser
   - helmet
   - pg (postgres driver)
+  - uuid-ossp (postges extention to enable uuid support)
   - @jest-mock/express (for testing. mocks request and result objects)
 
 ## Links to more details

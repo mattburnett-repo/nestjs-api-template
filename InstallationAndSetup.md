@@ -40,6 +40,8 @@ yarn install
 
 Copy the sample.env to .env
 
+<!-- TODO: add environment-specific files -->
+
 ```bash
 cp sample.env .env
 ```

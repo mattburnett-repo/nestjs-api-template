@@ -5,24 +5,20 @@ import { registerAs } from '@nestjs/config'
 export default registerAs('database', () => {
   return {
     type: process.env.DB_TYPE || 'postgres',
-    // logging: true,
-    logging: process.env.NODE_ENV === 'dev' || false,
     host: process.env.DB_HOST,
     port: +process.env.DB_PORT,
     username: process.env.DB_USER_NAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABSE_NAME,
     autoLoadEntities: true,
-    // synchronize: false,
-    synchronize: process.env.NODE_ENV !== 'production' || false,
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-    migrations: ['src/migrations/*{.ts,.js}'],
+    // typeorm / synchornization logging:
+    logging: process.env.NODE_ENV === 'local' ? true : false,
+    // don't update database here. use migration:run:xxxxx instead.
+    synchronize: false,
+    migrations: [__dirname + '/../db/migrations/*.{js,ts}'],
     migrationsTableName: 'migrations',
-    cli: {
-      migrationsDir: '../db/migrations',
-      subscribers: ['src/subscriber/**/*{.ts,.js}'],
-      seeds: ['src/db/seeds/**/*{.ts,.js}'],
-      factories: ['src/db/factories/**/*{.ts,.js}']
-    }
+    // Postgres database hosting expects SSL, but localhost doesn't.
+    ssl: process.env.NODE_ENV === 'deployed' ? true : false
   }
 })

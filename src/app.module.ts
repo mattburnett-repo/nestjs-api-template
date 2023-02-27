@@ -13,19 +13,20 @@ import { AuthModule } from './auth/auth.module'
 // https://stackoverflow.com/questions/59913475/configure-typeorm-with-one-configuration-for-cli-and-nestjs-application
 import dbConfig from './config/dbConfig'
 
-// https://www.elvisduru.com/blog/nestjs-jwt-authentication-refresh-token
-
+const ENV = process.env.NODE_ENV
 @Module({
   imports: [
-    ExampleModule,
-    UsersModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: !ENV ? '.env' : `.env.${ENV}`,
+      load: [dbConfig]
+    }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => ({
-        ...configService.get('database')
-      })
+      useFactory: (cfg: ConfigService) => cfg.get('database')
     }),
-    ConfigModule.forRoot({ isGlobal: true, load: [dbConfig] }),
+    ExampleModule,
+    UsersModule,
     UsersModule,
     AuthModule
   ],
