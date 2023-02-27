@@ -35,7 +35,7 @@ async function bootstrap() {
 
   // Start the server
   await app.listen(4000, () => {
-    console.log('localhost (with swagger and typeOrm) listening on port 4000')
+    console.log('api started and listening.')
   })
 }
 bootstrap()
