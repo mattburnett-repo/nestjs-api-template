@@ -40,11 +40,11 @@ yarn install
 
 Copy the sample.env to .env
 
-<!-- TODO: add environment-specific files -->
-
 ```bash
 cp sample.env .env
 ```
+
+You should also make a `.env.test` file.
 
 Create the database manually.
 
@@ -73,6 +73,8 @@ JWT_REFRESH_SECRET=
   ```bash
   node -e "console.log(require('crypto').randomBytes(64).toString('base64'));"
   ```
+
+  You should also make a `.env.test` file.
 
 If you are not using Postgres as a database, you will need to make some changes to the `dbConfig` and `cliConfig` files. More info is provided in the 'Database config' paragraph of the [Dev notes](./DevNotes.md) document.
 

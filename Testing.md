@@ -6,6 +6,8 @@ An important thing to know about testing with NestJS is that much of it depends 
 
 [This video](https://www.youtube.com/watch?v=dXOfOgFFKuY&t=776s) explains the basic concepts and has examples.
 
+## Tests expect a .env.test file.
+
 ---
 
 Basic tests

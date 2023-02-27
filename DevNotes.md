@@ -2,7 +2,6 @@
 
 - Basis
 - Database config.
-- TypeORM.
 - Authentication.
 - Testing.
 - Logging.
@@ -30,25 +29,6 @@ Database config:
 
   This will add a Postgres extension for uuid_v4.
 
-TypeORM:
-
-- migrations
-  - create
-    ```bash
-    yarn typeorm migration:create src/db/migrations/name.of.migration.here
-    ```
-  - generate
-    - Doesn't work with typeorm 0.3.x
-      ```bash
-      yarn typeorm migration:generate -d ./src/config/cliConfig aMigrationName
-      ```
-      returns the message
-      ```bash
-      No changes in database schema were found - cannot generate a migration. To create a new empty migration use "typeorm migration:create" command
-      ```
-    - [This is a known issue](https://github.com/typeorm/typeorm/issues/5965#issuecomment-680839366) and it looks like the resolution depends on changes to the typeorm package for 0.3.x.
-    - [Refer here for more information](https://stackoverflow.com/questions/72682474/typeorm-migrationgenerate-failure-not-enough-non-option-arguments-got-0-need)
-
 Authentication:
 
 - Passport JWT strategy is implemented. `auth` and `user` resources are provided as a starting point.
@@ -56,12 +36,12 @@ Authentication:
 
 Testing:
 
+- Tests expect a .env.test file.
 - An example of protected route testing in located in `app.e2e-spec.ts`.
 - As soon as you start adding functionality, tests will fail with confusing messages (ie. 'Cant find ... in ...').
   - This ie likely due to dependencies among modules. Usually this can be resolved by mocking the test subject's dependencies.
   - [Here is a good resource for setting up tests for TypeORM](https://github.com/jmcdo29/testing-nestjs/tree/main/apps/typeorm-sample/src/cat), using the 'cat' resource from the NestJS docs.
   - [This video](https://www.youtube.com/watch?v=dXOfOgFFKuY&t=776s) is also helpful.
-- app.e2e-spec.ts generates TypeORM log output if `process.env.NODE_ENV` is not equal to 'test'.
 
 Logging:
 

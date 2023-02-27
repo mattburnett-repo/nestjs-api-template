@@ -59,13 +59,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AppModule.html" data-type="entity-link" >AppModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-AppModule-788c746f585ba56184ed619ebc4834a94d4f85ce08fa583cddafa2b913388053b3c813c08ad46f91c8fe6489ae235f4ee4c3f25f7548804364ee710288bd8d95"' : 'data-target="#xs-controllers-links-module-AppModule-788c746f585ba56184ed619ebc4834a94d4f85ce08fa583cddafa2b913388053b3c813c08ad46f91c8fe6489ae235f4ee4c3f25f7548804364ee710288bd8d95"' }>
+                                            'data-target="#controllers-links-module-AppModule-297193aced5c5803f85f1d7141c884b4d3284c82601fd1df8a3c477c79e600103ebd9d788904d046f1d2c22f6d36f3acb41402749997a09fd46538d06c18e201"' : 'data-target="#xs-controllers-links-module-AppModule-297193aced5c5803f85f1d7141c884b4d3284c82601fd1df8a3c477c79e600103ebd9d788904d046f1d2c22f6d36f3acb41402749997a09fd46538d06c18e201"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-AppModule-788c746f585ba56184ed619ebc4834a94d4f85ce08fa583cddafa2b913388053b3c813c08ad46f91c8fe6489ae235f4ee4c3f25f7548804364ee710288bd8d95"' :
-                                            'id="xs-controllers-links-module-AppModule-788c746f585ba56184ed619ebc4834a94d4f85ce08fa583cddafa2b913388053b3c813c08ad46f91c8fe6489ae235f4ee4c3f25f7548804364ee710288bd8d95"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-AppModule-297193aced5c5803f85f1d7141c884b4d3284c82601fd1df8a3c477c79e600103ebd9d788904d046f1d2c22f6d36f3acb41402749997a09fd46538d06c18e201"' :
+                                            'id="xs-controllers-links-module-AppModule-297193aced5c5803f85f1d7141c884b4d3284c82601fd1df8a3c477c79e600103ebd9d788904d046f1d2c22f6d36f3acb41402749997a09fd46538d06c18e201"' }>
                                             <li class="link">
                                                 <a href="controllers/AppController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppController</a>
                                             </li>
@@ -73,13 +73,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-AppModule-788c746f585ba56184ed619ebc4834a94d4f85ce08fa583cddafa2b913388053b3c813c08ad46f91c8fe6489ae235f4ee4c3f25f7548804364ee710288bd8d95"' : 'data-target="#xs-injectables-links-module-AppModule-788c746f585ba56184ed619ebc4834a94d4f85ce08fa583cddafa2b913388053b3c813c08ad46f91c8fe6489ae235f4ee4c3f25f7548804364ee710288bd8d95"' }>
+                                        'data-target="#injectables-links-module-AppModule-297193aced5c5803f85f1d7141c884b4d3284c82601fd1df8a3c477c79e600103ebd9d788904d046f1d2c22f6d36f3acb41402749997a09fd46538d06c18e201"' : 'data-target="#xs-injectables-links-module-AppModule-297193aced5c5803f85f1d7141c884b4d3284c82601fd1df8a3c477c79e600103ebd9d788904d046f1d2c22f6d36f3acb41402749997a09fd46538d06c18e201"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-AppModule-788c746f585ba56184ed619ebc4834a94d4f85ce08fa583cddafa2b913388053b3c813c08ad46f91c8fe6489ae235f4ee4c3f25f7548804364ee710288bd8d95"' :
-                                        'id="xs-injectables-links-module-AppModule-788c746f585ba56184ed619ebc4834a94d4f85ce08fa583cddafa2b913388053b3c813c08ad46f91c8fe6489ae235f4ee4c3f25f7548804364ee710288bd8d95"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-AppModule-297193aced5c5803f85f1d7141c884b4d3284c82601fd1df8a3c477c79e600103ebd9d788904d046f1d2c22f6d36f3acb41402749997a09fd46538d06c18e201"' :
+                                        'id="xs-injectables-links-module-AppModule-297193aced5c5803f85f1d7141c884b4d3284c82601fd1df8a3c477c79e600103ebd9d788904d046f1d2c22f6d36f3acb41402749997a09fd46538d06c18e201"' }>
                                         <li class="link">
                                             <a href="injectables/AppService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppService</a>
                                         </li>

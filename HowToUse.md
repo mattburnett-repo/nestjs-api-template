@@ -11,8 +11,7 @@ If you just want to jump in and see what happens, you can [create new endpoint w
     - entity
       - create an entities folder
         - create entity file (xxx.entity.ts)
-      - migration:generate or synchronize
-        - **_ NOTE _** There is currently an issue with the typeorm cli version 0.3.x that breaks the migration functionality.
+      - migration:generate / migration:run
     - dto
     - service
     - controller
