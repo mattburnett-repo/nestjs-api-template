@@ -12,7 +12,7 @@ import {
 import { ExampleService } from './example.service'
 import { CreateExampleDto } from './dto/create-example.dto'
 import { UpdateExampleDto } from './dto/update-example.dto'
-import { ApiTags } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger'
 import { AccessTokenGuard } from '../common/guards/accessToken.guard'
 
 @ApiTags('example')
@@ -29,6 +29,7 @@ export class ExampleController {
 
   @UseGuards(AccessTokenGuard)
   @Get('protected')
+  @ApiBearerAuth('bearerAuth')
   getProtected(): string {
     return this.exampleService.getProtected()
   }

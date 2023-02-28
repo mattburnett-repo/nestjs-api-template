@@ -44,7 +44,7 @@ Copy the sample.env to .env
 cp sample.env .env
 ```
 
-You should also make a `.env.test` file.
+## You should also make a `.env.test` file.
 
 Create the database manually.
 
@@ -64,6 +64,9 @@ DB_DATABASE_NAME=
 
 API_PORT= # 4000
 
+SWAGGER_USER=
+SWAGGER_PASSWORD=
+
 JWT_SECRET=
 JWT_REFRESH_SECRET=
 ```
@@ -74,7 +77,7 @@ JWT_REFRESH_SECRET=
   node -e "console.log(require('crypto').randomBytes(64).toString('base64'));"
   ```
 
-  You should also make a `.env.test` file.
+  ## You should also make a `.env.test` file.
 
 If you are not using Postgres as a database, you will need to make some changes to the `dbConfig` and `cliConfig` files. More info is provided in the 'Database config' paragraph of the [Dev notes](./DevNotes.md) document.
 
@@ -107,12 +110,20 @@ Start the app in dev / watch mode
   yarn start:dev
 ```
 
-Find the app at [localhost:4000](http://localhost:4000). You should see a 'hello world' message.
+Find the app at [localhost:4000](http://localhost:4000).
 
-Find the Swagger / OpenAPI docs at [localhost:4000/api](http://localhost:4000/api). You should see a Swagger page displaying 'example', 'users' and 'auth'.
-You can edit the title and description in the file [main.ts](./src/main.ts), in the `const swaggerConfig` block.
+- You should see a 'hello world' message.
 
-You can then build out data seeders for your database. This template uses `factories` and `seeders`. You can find examples in their own folders under the `src/db` folder, which you can run to get a sense of how the seeding process works.
+Find the Swagger / OpenAPI docs at [localhost:4000/api](http://localhost:4000/api).
+
+- Log in with the values of environment variables `SWAGGER_USER` and `SWAGGER_PASSWORD`.
+- You should see a Swagger page displaying 'example', 'users' and 'auth'.
+- You can edit the title and description in the file [main.ts](./src/main.ts), in the `const swaggerConfig` block.
+
+You can then build out data seeders for your database.
+
+- This template uses `factories` and `seeders`.
+- You can find examples in their own folders under the `src/db` folder, which you can run to get a sense of how the seeding process works.
 
 If you run the seeders 'out-of-the-box', you should have some test data in tables called `examples` and `user`.
 
