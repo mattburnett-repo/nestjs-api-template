@@ -7,6 +7,7 @@
   "license": "ISC",
   "scripts": {
     "build": "nest build",
+    "postbuild": "cp package.json dist/package.json",
     "docs:create": "npx @compodoc/compodoc -p tsconfig.json --theme vagrant -n \"NestJS API Template\"",
     "docs:create:server": "npx @compodoc/compodoc -p tsconfig.json --theme vagrant -n \"NestJS API Template\" -s",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
