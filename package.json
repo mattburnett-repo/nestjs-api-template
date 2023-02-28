@@ -5,6 +5,7 @@
   "author": "Matt Burnett mburnett@tutanota.de",
   "private": true,
   "license": "ISC",
+  "main": "dist/main.js",
   "scripts": {
     "build": "nest build",
     "docs:create": "npx @compodoc/compodoc -p tsconfig.json --theme vagrant -n \"NestJS API Template\"",
