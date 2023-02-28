@@ -68,7 +68,9 @@ describe('ExampleService', () => {
   })
 
   it('should have a protected resource', () => {
-    expect(service.getProtected()).toEqual('This is a protected resource')
+    expect(service.getProtected()).toEqual(
+      'This is a protected resource. If you see this, authentication was successful.'
+    )
   })
   it('should create an example', () => {
     expect(service.create(mockExample)).resolves.toEqual({
