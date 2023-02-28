@@ -11,14 +11,14 @@ The purpose of this repo is to provide a straight-forward way to quickly stand u
 
 This is not a turn-key API solution, but rather just a way to get started, quickly.
 
-Starting points for database connectivity, API endpoint generation, entity creation, data seeding, testing, authentication, etc. are available 'out-of-the-box'.
+Starting points for database connectivity, API endpoint generation, entity creation, data seeding, testing, authentication, etc. are available.
 
 Example code is provided in the `src/example` folder, which can be deleted once you are underway.
 
 ## Includes
 
 - NestJS
-  - Swagger / OpenAPI
+  - Swagger / OpenAPI documentation
   - Basic logging
   - Compodoc
 - TypeORM
@@ -37,6 +37,7 @@ Example code is provided in the `src/example` folder, which can be deleted once 
   - pg (postgres driver)
   - uuid-ossp (postges extention to enable uuid support)
   - @jest-mock/express (for testing. mocks request and result objects)
+  - express-basic-auth (provides basic authentication for Swagger API doc)
 
 ## Links to more details
 

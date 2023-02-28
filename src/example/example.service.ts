@@ -18,7 +18,7 @@ export class ExampleService {
   }
 
   getProtected(): string {
-    return 'This is a protected resource'
+    return 'This is a protected resource. If you see this, authentication was successful.'
   }
 
   create(createExampleDto: CreateExampleDto) {
@@ -41,8 +41,6 @@ export class ExampleService {
   async update(id: string, updateExampleDto: UpdateExampleDto) {
     const example = await this.findOneById(id)
 
-    // TODO: find a cleaner way to do this. This is probably overkill
-    //    maybe ? or ... somehow
     example.testString = updateExampleDto.testString
     example.testNumber = updateExampleDto.testNumber
     example.isActive = updateExampleDto.isActive

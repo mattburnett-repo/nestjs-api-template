@@ -1,3 +1,6 @@
+// import * as dotenv from 'dotenv'
+// dotenv.config()
+
 import { NestFactory } from '@nestjs/core'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 
@@ -8,6 +11,8 @@ import * as cookieParser from 'cookie-parser'
 import helmet from 'helmet'
 import { ValidationPipe } from '@nestjs/common'
 // no csrf because it is advised to use JWT instead of cookie + csrf + session + ...
+// basicAuth to restrict access to swagger ui
+import * as basicAuth from 'express-basic-auth'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -23,11 +28,31 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe())
 
-  // swagger / OpenAPI
+  app.use(
+    ['/api', '/api-json', 'api-yaml'],
+    basicAuth({
+      challenge: true,
+      users: {
+        [process.env.SWAGGER_USER]: process.env.SWAGGER_PASSWORD
+      }
+    })
+  )
+
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Example')
     .setDescription('NestJS API template documentation')
     .setVersion('1.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        description: 'Enter JWT token',
+        in: 'header'
+      },
+      'bearerAuth' // This name here is important for matching up with @ApiBearerAuth() in your controller!
+    )
     .build()
   // get api.json / api.yaml in the browser by theURL/api-json / theURL/api-yaml
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig)
