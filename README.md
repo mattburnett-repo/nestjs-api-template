@@ -17,11 +17,11 @@ Example code is provided in the `src/example` folder.
 
 ## More details
 
-- [Tech stack](./TechStack.md)
-- [Installation and setup](./InstallationAndSetup.md)
-- [Docker](./Docker.md)
-- [How to use](./HowToUse.md)
-- [Migrations / Seeding](./MigrationsAndSeeding.md)
-- [Testing](./Testing.md)
-- [Documentation](./Documentation.md)
-- [Dev notes](./DevNotes.md)
+- [Tech stack](./readme/TechStack.md)
+- [Installation and setup](./readme/InstallationAndSetup.md)
+- [Docker](./readme/Docker.md)
+- [How to use](./readme/HowToUse.md)
+- [Migrations / Seeding](./readme/MigrationsAndSeeding.md)
+- [Testing](./readme/Testing.md)
+- [Documentation](./readme/Documentation.md)
+- [Dev notes](./readme/DevNotes.md)
