@@ -1,6 +1,6 @@
 # Installation and setup
 
-- Clone, reset git remote and install the code.
+- Clone, reset git and install the code.
 - Set up a database.
 - Seed the database.
 - Run tests.

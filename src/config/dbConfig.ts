@@ -1,5 +1,3 @@
-// https://stackoverflow.com/questions/59913475/configure-typeorm-with-one-configuration-for-cli-and-nestjs-application
-
 import { registerAs } from '@nestjs/config'
 
 export default registerAs('database', () => {
@@ -19,6 +17,10 @@ export default registerAs('database', () => {
     migrations: [__dirname + '/../db/migrations/*.{js,ts}'],
     migrationsTableName: 'migrations',
     // Postgres database hosting expects SSL, but localhost doesn't.
-    ssl: process.env.NODE_ENV === 'deployed' ? true : false
+    ssl:
+      // eslint-disable-next-line prettier/prettier
+      process.env.NODE_ENV === 'deployed' || process.env.NODE_ENV === 'production'
+        ? true
+        : false
   }
 })

@@ -1,17 +1,13 @@
-// import * as dotenv from 'dotenv'
-// dotenv.config()
-
 import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 
 import { AppModule } from './app.module'
 
-// routine, utility middlewares
 import * as cookieParser from 'cookie-parser'
 import helmet from 'helmet'
-import { ValidationPipe } from '@nestjs/common'
 // NOTE: no csrf because it is advised to use JWT instead of cookie + csrf + session + ...
+import { ValidationPipe } from '@nestjs/common'
 // basicAuth to restrict access to swagger ui
 import * as basicAuth from 'express-basic-auth'
 
@@ -22,7 +18,6 @@ async function bootstrap() {
   const nodeEnv = configService.get<string>('NODE_ENV')
 
   app.use(cookieParser())
-  // helmet config options here: https://www.npmjs.com/package/helmet
   app.use(helmet())
   app.enableCors()
 
@@ -52,7 +47,8 @@ async function bootstrap() {
         scheme: 'bearer',
         bearerFormat: 'JWT',
         name: 'JWT',
-        description: 'Enter JWT token',
+        description:
+          'Enter JWT token. Get a token from the auth/login endpoint.',
         in: 'header'
       },
       'bearerAuth' // This name here is important for matching up with @ApiBearerAuth() in your controller!
