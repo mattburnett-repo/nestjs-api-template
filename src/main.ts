@@ -1,6 +1,7 @@
 // import * as dotenv from 'dotenv'
 // dotenv.config()
 
+import { ConfigService } from '@nestjs/config'
 import { NestFactory } from '@nestjs/core'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 
@@ -10,19 +11,22 @@ import { AppModule } from './app.module'
 import * as cookieParser from 'cookie-parser'
 import helmet from 'helmet'
 import { ValidationPipe } from '@nestjs/common'
-// no csrf because it is advised to use JWT instead of cookie + csrf + session + ...
+// NOTE: no csrf because it is advised to use JWT instead of cookie + csrf + session + ...
 // basicAuth to restrict access to swagger ui
 import * as basicAuth from 'express-basic-auth'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
+  const configService = app.get(ConfigService)
+  const port = process.env.API_PORT || configService.get<number>('API_PORT')
+  const nodeEnv = configService.get<string>('NODE_ENV')
 
   app.use(cookieParser())
   // helmet config options here: https://www.npmjs.com/package/helmet
   app.use(helmet())
   app.enableCors()
 
-  // logger goes here somewhere
+  // logger goes here
   //    or just instantiate a logger in the class/es you want logging for
   //    https://javascript.plainenglish.io/how-to-use-nestjs-logger-2a9cb107bce9
 
@@ -59,8 +63,13 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, swaggerDocument)
 
   // Start the server
-  await app.listen(4000, () => {
-    console.log('api started and listening.')
+  await app.listen(port, () => {
+    console.log(
+      'api started as NODE_ENV:',
+      nodeEnv,
+      'and listening on port:',
+      port
+    )
   })
 }
 bootstrap()
