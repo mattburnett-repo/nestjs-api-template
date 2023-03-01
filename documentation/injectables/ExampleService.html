@@ -413,8 +413,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/example/example.service.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/example/example.service.ts:54</a></div>
                 </td>
             </tr>
 
@@ -603,7 +603,7 @@ export class ExampleService {
   }
 
   getProtected(): string {
-    return &#x27;This is a protected resource&#x27;
+    return &#x27;This is a protected resource. If you see this, authentication was successful.&#x27;
   }
 
   create(createExampleDto: CreateExampleDto) {
@@ -626,8 +626,6 @@ export class ExampleService {
   async update(id: string, updateExampleDto: UpdateExampleDto) {
     const example &#x3D; await this.findOneById(id)
 
-    // TODO: find a cleaner way to do this. This is probably overkill
-    //    maybe ? or ... somehow
     example.testString &#x3D; updateExampleDto.testString
     example.testNumber &#x3D; updateExampleDto.testNumber
     example.isActive &#x3D; updateExampleDto.isActive

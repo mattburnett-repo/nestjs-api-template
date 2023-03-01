@@ -222,8 +222,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/example/example.controller.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/example/example.controller.ts:38</a></div>
                 </td>
             </tr>
 
@@ -266,8 +266,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">src/example/example.controller.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/example/example.controller.ts:44</a></div>
                 </td>
             </tr>
 
@@ -336,14 +336,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(AccessTokenGuard)<br />@Get(&#x27;protected&#x27;)<br /></code>
+                    <code>@UseGuards(AccessTokenGuard)<br />@Get(&#x27;protected&#x27;)<br />@ApiBearerAuth(&#x27;bearerAuth&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/example/example.controller.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/example/example.controller.ts:33</a></div>
                 </td>
             </tr>
 
@@ -386,8 +386,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/example/example.controller.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/example/example.controller.ts:57</a></div>
                 </td>
             </tr>
 
@@ -462,8 +462,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">src/example/example.controller.ts:48</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/example/example.controller.ts:49</a></div>
                 </td>
             </tr>
 
@@ -541,7 +541,7 @@
 import { ExampleService } from &#x27;./example.service&#x27;
 import { CreateExampleDto } from &#x27;./dto/create-example.dto&#x27;
 import { UpdateExampleDto } from &#x27;./dto/update-example.dto&#x27;
-import { ApiTags } from &#x27;@nestjs/swagger&#x27;
+import { ApiBearerAuth, ApiTags } from &#x27;@nestjs/swagger&#x27;
 import { AccessTokenGuard } from &#x27;../common/guards/accessToken.guard&#x27;
 
 @ApiTags(&#x27;example&#x27;)
@@ -558,6 +558,7 @@ export class ExampleController {
 
   @UseGuards(AccessTokenGuard)
   @Get(&#x27;protected&#x27;)
+  @ApiBearerAuth(&#x27;bearerAuth&#x27;)
   getProtected(): string {
     return this.exampleService.getProtected()
   }
