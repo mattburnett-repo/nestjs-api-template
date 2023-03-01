@@ -39,3 +39,4 @@ lerna-debug.log*
 .env.*
 *.code-workspace
 docker-compose.yaml
+fly.toml
