@@ -34,7 +34,8 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# environment vars
+# environment, general files to ignore
 .env
 .env.*
 *.code-workspace
+docker-compose.yaml

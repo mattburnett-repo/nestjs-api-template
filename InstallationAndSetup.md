@@ -19,9 +19,16 @@ Clone the repo (Don't forget the ' . ' at the end!)
 git clone https://github.com/mattburnett-repo/nestjs-api-template.git .
 ```
 
-`You should reset your project's git remote`.
+`You should reset your project's git repository, to not use the template repo's git information.`
 
-Edit the project information in `package.json`
+```bash
+rm -rf .git
+git init
+```
+
+`Create a new repo on GitHub for your project and configure your new, local git repo to use the new GitHub repository as a remote.`
+
+Edit the project information in `package.json` header.
 
 ```bash
   "name": the.project.name,
@@ -54,7 +61,6 @@ Create the database manually.
 Once a database is available to your project, set the .env vars with your project's database-specific connection info and jwt secrets.
 
 ```bash
-NODE_DEV= # use one of: 'test' | 'dev' | 'prod' | 'production'
 DB_TYPE=
 DB_HOST=
 DB_PORT=
