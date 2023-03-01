@@ -10,7 +10,6 @@ import { ExampleModule } from './example/example.module'
 import { UsersModule } from './users/users.module'
 import { AuthModule } from './auth/auth.module'
 
-// https://stackoverflow.com/questions/59913475/configure-typeorm-with-one-configuration-for-cli-and-nestjs-application
 import dbConfig from './config/dbConfig'
 
 const ENV = process.env.NODE_ENV

@@ -21,6 +21,9 @@ Example code is provided in the `src/example` folder, which can be deleted once 
   - Swagger / OpenAPI documentation
   - Basic logging
   - Compodoc
+- Docker
+  - Dockerfile
+  - docker-compose.yaml file
 - TypeORM
 - Passport JS
   - JWT Strategy
@@ -42,6 +45,7 @@ Example code is provided in the `src/example` folder, which can be deleted once 
 ## Links to more details
 
 - [Installation and setup](./InstallationAndSetup.md)
+- [Docker](./Docker.md)
 - [How to use](./HowToUse.md)
 - [Migrations / Seeding](./MigrationsAndSeeding.md)
 - [Testing](./Testing.md)
