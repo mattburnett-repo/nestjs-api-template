@@ -14,6 +14,10 @@
 - Testing
   - Unit testing
   - E2E / endpoint testing
+- CI/CD
+  - Github Actions
+    - Tests are run for pull requests
+    - Deployment happens when code is merged
 - Additional packages
   - argon2
   - typeorm-extention

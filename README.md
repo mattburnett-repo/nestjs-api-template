@@ -9,7 +9,7 @@ The purpose of this repo is to provide a straight-forward way to quickly stand u
 
 An instance of this repo is deployed [here](https://nestjs-api-template.fly.dev/api), where it connects to a database hosted at another domain.
 
-This is a work-in-progress.
+- A basic CI/CD pipeline is enabled via Github Actions. It runs tests when receiving a Pull Request, then deploys the application once the tests pass and the new code has been merged.
 
 Starting points for database connectivity, API endpoint generation, entity creation, data seeding, testing, authentication, etc. are available.
 
