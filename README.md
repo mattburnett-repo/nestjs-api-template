@@ -1,7 +1,7 @@
 # NestJS API Template
 
 <!-- Uncomment the line below when using this template for a project. -->
-<!-- This project was built with the [NestJS Template]([github link goes here)](https://github.com/mattburnett-repo/nestjs-api-template). -->
+<!-- This project was built with the [NestJS Template](https://github.com/mattburnett-repo/nestjs-api-template). -->
 
 This repo is a scaffolded / boilerplate implementation of NestJS and supporting modules.
 
