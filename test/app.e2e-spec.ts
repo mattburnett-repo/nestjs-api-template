@@ -43,7 +43,7 @@ describe('AppController (e2e)', () => {
 
     const loginResponse = await request(app.getHttpServer())
       .post('/auth/login')
-      .send({ username: 'testOne', password: 'testOne' })
+      .send({ username: 'testOne', password: 'testOne' }) // how to mock this? mock auth.service.getTokens()?
       .expect(201)
 
     // store the jwt token for the next request

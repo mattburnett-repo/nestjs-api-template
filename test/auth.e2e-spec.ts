@@ -3,10 +3,9 @@ import { INestApplication } from '@nestjs/common'
 import { getRepositoryToken } from '@nestjs/typeorm'
 
 import * as request from 'supertest'
-import { getMockReq } from '@jest-mock/express'
 
 import { AuthModule } from '../src/auth/auth.module'
-import { AuthDto } from '../src/Auth/dto/auth.dto'
+import { AuthDto } from '../src/auth/dto/auth.dto'
 import { AuthService } from '../src/auth/auth.service'
 
 import { User } from '../src/users/entities/user.entity'
@@ -26,11 +25,6 @@ describe('Auth controller (e2e)', () => {
     username: 'test',
     password: 'test'
   }
-
-  // https://www.npmjs.com/package/@jest-mock/express/v/1.4.4
-  // const mockRequest = getMockReq({
-  //   user: { sub: 'test', refreshToken: 'asdf' }
-  // })
 
   const mockToken = {
     user: {
