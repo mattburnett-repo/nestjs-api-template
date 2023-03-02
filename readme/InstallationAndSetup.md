@@ -19,6 +19,13 @@ Clone the repo (Don't forget the ' . ' at the end!)
 git clone https://github.com/mattburnett-repo/nestjs-api-template.git .
 ```
 
+Delete these files, if they are present. They are necesary for this template repo, but will just get in the way if you leave them in.
+
+```bash
+rm -rf .github
+rm -rf fly.toml
+```
+
 `You should reset your project's git repository, to not use the template repo's git information.`
 
 ```bash
