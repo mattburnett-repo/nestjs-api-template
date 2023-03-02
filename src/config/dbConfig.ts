@@ -10,17 +10,18 @@ export default registerAs('database', () => {
     database: process.env.DB_DATABASE_NAME,
     autoLoadEntities: true,
     entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-    // typeorm / synchornization logging:
+    // typeorm / synchronization logging:
     logging: process.env.NODE_ENV === 'local' ? true : false,
     // don't update database here. use migration:run:xxxxx instead.
     synchronize: false,
     migrations: [__dirname + '/../db/migrations/*.{js,ts}'],
     migrationsTableName: 'migrations',
     // Postgres database hosting expects SSL, but localhost doesn't.
-    ssl:
-      // eslint-disable-next-line prettier/prettier
-      process.env.NODE_ENV === 'deployed' || process.env.NODE_ENV === 'production'
-        ? true
-        : false
+    // ssl:
+    //   // eslint-disable-next-line prettier/prettier
+    //   process.env.NODE_ENV === 'deployed' || process.env.NODE_ENV === 'production'
+    //     ? true
+    //     : false
+    ssl: process.env.DB_SSL_MODE === 'true' ? true : false
   }
 })
