@@ -1,7 +1,8 @@
 name: pull_request_unit_test
 on:
   pull_request:
-    branches: [main]
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
