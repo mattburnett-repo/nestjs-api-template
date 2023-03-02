@@ -16,12 +16,7 @@ export default registerAs('database', () => {
     synchronize: false,
     migrations: [__dirname + '/../db/migrations/*.{js,ts}'],
     migrationsTableName: 'migrations',
-    // Postgres database hosting expects SSL, but localhost doesn't.
-    // ssl:
-    //   // eslint-disable-next-line prettier/prettier
-    //   process.env.NODE_ENV === 'deployed' || process.env.NODE_ENV === 'production'
-    //     ? true
-    //     : false
+
     ssl: process.env.DB_SSL_MODE === 'true' ? true : false
   }
 })
