@@ -9,6 +9,7 @@ processes = []
   DB_TYPE="postgres"
   DB_PORT=5432
   API_PORT=4000
+  DB_SSL_MODE="true"
 
 [experimental]
   auto_rollback = true
