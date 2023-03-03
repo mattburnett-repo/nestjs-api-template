@@ -58,7 +58,7 @@ Copy the sample.env to .env
 cp sample.env .env
 ```
 
-## You should also make a `.env.test` file.
+## You should also make a `.env.test` and a `.env.local` file.
 
 Create the database manually.
 
@@ -94,16 +94,28 @@ JWT_REFRESH_SECRET=
 
 If you are not using Postgres as a database, you will need to make some changes to the `dbConfig` and `cliConfig` files. More info is provided in the 'Database config' paragraph of the [Dev notes](./DevNotes.md) document.
 
-Run the seeders using
+Create the starter database tables by generating a migration
 
 ```bash
-yarn type-ext:db:seed
+yarn migration:generate:local src/db/migrations/generateStarterTables
+```
+
+Then run this migration
+
+```bash
+yarn migration:run:local
 ```
 
 - If there are Postgres errors about uuid_v4 not being available, go to pqsql / pgAdmin / etc. and run the following, as you would run a regular SQL statement
   ```bash
   create extension "uuid-ossp";
   ```
+
+Run the seeders using
+
+```bash
+yarn type-ext:db:seed:local
+```
 
 Run the tests
 
@@ -120,7 +132,7 @@ yarn test:e2e
 Start the app in dev / watch mode
 
 ```bash
-  yarn start:dev
+  yarn start:dev:local
 ```
 
 Find the app at [localhost:4000](http://localhost:4000).
