@@ -35,7 +35,7 @@ Authentication:
 
 - Passport JWT strategy is implemented. `auth` and `user` resources are provided as a starting point.
 - There is an `example/protected` route to use as an example.
-- User 'testOne`/ password`testOne` are available for basic authentication.
+- User `testOne`/ password `testOne` are available for basic authentication.
 
 Testing:
 
