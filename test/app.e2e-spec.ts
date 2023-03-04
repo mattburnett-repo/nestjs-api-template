@@ -36,14 +36,13 @@ describe('AppController (e2e)', () => {
       .expect(401)
   })
 
-  // FIXME: mock the call to /auth/login. We don't need to call the database here. We just need to get a token.
   // FIXME: refactor the loginResponse block to a BeforeAll hook, so that we can reuse it in future tests.
   it('GETs a protected endpoint when auth is provided.', async () => {
     // https://stackoverflow.com/questions/58359414/how-e2e-with-guard-nestjs
 
     const loginResponse = await request(app.getHttpServer())
       .post('/auth/login')
-      .send({ username: 'testOne', password: 'testOne' }) // how to mock this? mock auth.service.getTokens()?
+      .send({ username: 'testOne', password: 'testOne' }) 
       .expect(201)
 
     // store the jwt token for the next request
